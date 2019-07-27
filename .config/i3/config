@@ -30,7 +30,7 @@ font pango:System San Francisco Display 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -190,14 +190,16 @@ exec_always xrandr --output DP-4 --mode 2560x1440 --rate 165.00
 ##############################################################
 
 ####### ****** AUDIO CONTROL ****** ####### 
-bindsym XF86AudioMute exec amixer sset 'Master' toggle
-bindsym XF86AudioLowerVolume exec amixer sset 'Master' 2%-
-bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 2%+
+#bindsym XF86AudioMute exec amixer sset 'Master' toggle
+bindsym XF86AudioMute exec amixer sset 'Master' 0%
+bindsym XF86AudioLowerVolume exec amixer sset 'Master' 2%- && killall -USR1 i3status
+bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 2%+ && killall -USR1 i3status
 ###########################################
 
 ####### ****** SET WALLPAPER ****** #######
 # exec_always feh --bg-scale /home/william/Downloads/wallpaper.jpg
-exec --no-startup-id hsetroot -solid "#c79081"
+# exec --no-startup-id hsetroot -solid "#c79081"
+exec nitrogen --restore
 ###########################################
 
 ####### ****** REMOVE WINDOW BORDER ****** #######
@@ -220,3 +222,4 @@ bindsym Mod1+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 for_window [instance="fourier"] floating enable
 for_window [instance="test"] floating enable
 for_window [instance="chess"] floating enable
+for_window [instance="out"] floating enable
