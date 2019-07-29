@@ -1,0 +1,27 @@
+i3-gaps
+compton
+rofi
+xorg
+xorg-utils
+cmake
+code
+dhcpcd
+fakeroot
+fish
+gcc
+git
+make
+sudo
+termite
+ufw
+ttf-bitstream-vera
+ttf-dejavu
+ranger
+nvidia
+nitrogen
+firefox
+htop
+alsa-utils
+pulseaudio
+
+sudo pacman -S i3-gaps compton rofi xorg-server xorg cmake code dhcpcd fakeroot fish gcc git make sudo termite ufw ttf-bitstream-vera ttf-dejavu ranger nvidia nitrogen firefox htop alsa-utils pulseaudio
