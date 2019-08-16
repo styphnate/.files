@@ -186,14 +186,18 @@ exec --no-startup-id compton -b -c -f --config ~/.config/compton.conf
 ##############################################
 
 ####### ****** SETS RESOLUTION AND REFRESH RATE ****** #######
-exec_always xrandr --output DP-4 --mode 2560x1440 --rate 165.00
+exec_always xrandr --output DP-2 --mode 2560x1440 --rate 165.00
 ##############################################################
 
 ####### ****** AUDIO CONTROL ****** ####### 
 #bindsym XF86AudioMute exec amixer sset 'Master' toggle
 bindsym XF86AudioMute exec amixer sset 'Master' 0%
-bindsym XF86AudioLowerVolume exec amixer sset 'Master' 2%- && killall -USR1 i3status
-bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 2%+ && killall -USR1 i3status
+#bindsym XF86AudioLowerVolume exec amixer sset 'Master' 2%- && killall -USR1 i3status
+#bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 2%+ && killall -USR1 i3status
+#bindsym XF86AudioRaiseVolume exec amixer sset 'PCM' 2%+ && killall -USR1 i3status
+#bindsym XF86AudioLowerVolume exec amixer sset 'PCM' 2%- && killall -USR1 i3status'
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
 ###########################################
 
 ####### ****** SET WALLPAPER ****** #######
