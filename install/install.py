@@ -4,8 +4,8 @@ from shutil import copyfile
 from distutils.dir_util import copy_tree
 import os
 
-subprocess.run(["sudo", "pacman", "-Syyu", "--noconfirm"])
-subprocess.run(["sudo", "pacman", "-S", 
+subprocess.run(["sudo", "pacman", "-Syyuq", "--noconfirm", "--noprogressbar"])
+subprocess.run(["sudo", "pacman", "-Sq", 
     "i3-gaps",
     "xorg",
     "cmake",
@@ -28,7 +28,10 @@ subprocess.run(["sudo", "pacman", "-S",
     "pavucontrol",
     "ttf-dejavu",
     "discord",
-    "--noconfirm"])
+    "gimp",
+    "scrot"
+    "--noconfirm",
+    "--noprogressbar"])
 
 path = os.path.dirname(os.path.abspath(__file__))
 copyfile(path + "/.files/i3/config", "/home/" + os.getlogin() + "/.config/i3/config")
@@ -44,5 +47,5 @@ subprocess.run(["sudo", "chsh", "--shell", "/usr/bin/fish", os.getlogin()])
 
 subprocess.run(["git", "clone", "https://aur.archlinux.org/yay.git"])
 os.chdir(path + "/yay")
-subprocess.run(["makepkg", "-si"])
-subprocess.run(["yay", "-S", "spotify", "--noconfirm"])
+subprocess.run(["makepkg", "-siq", "--noconfirm", "--noprogressbar"])
+subprocess.run(["yay", "-Sq", "spotify", "--noconfirm", "--noprogressbar"])
